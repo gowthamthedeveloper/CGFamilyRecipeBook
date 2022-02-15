@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.impeccthreads.cgfamilyrecipebook">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application
+        android:name=".application.CGFamilyRecipeBookApp"
+        android:allowBackup="true"
+        android:icon="@drawable/app_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/app_logo"
+        android:supportsRtl="true"
+        android:requestLegacyExternalStorage="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.recipes.RecipeDetailActivity"></activity>
+        <activity android:name=".activity.recipes.RecipeActivity" />
+        <activity android:name=".activity.SplashActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.recipes.CategoryActivity" />
+        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.HomeActivity"/>
+        <activity android:name=".activity.cookingschedule.CookingScheduleDetailsActivity"/>
+        <activity android:name=".activity.cookingschedule.CookingScheduleListActivity"/>
+        <activity android:name=".activity.cookingschedule.ScheduleCookingActivity"/>
+        <activity android:name=".activity.recipes.EditCookingRecipeMethodActivity"/>
+        <activity android:name=".activity.recipes.AddCookingRecipeActivity"/>
+        <activity android:name=".activity.useraccount.LoginActivity"/>
+        <activity android:name=".activity.useraccount.SettingsActivity"/>
+
+    </application>
+
+</manifest>

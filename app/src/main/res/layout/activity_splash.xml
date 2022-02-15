@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activity.SplashActivity">
+
+<!--    <TextView-->
+<!--        android:id="@+id/textViewAppName"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:fontFamily="@font/opensans_bold"-->
+<!--        android:textSize="@dimen/dp_26"-->
+<!--        android:text="CGFamilyRecipeBook"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"/>-->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/splash_logo1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewPoweredby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="powered by"
+        android:fontFamily="@font/opensans_regular"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dp_11"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintBottom_toTopOf="@+id/textViewCompany"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/textViewCompany"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:fontFamily="@font/roboto_bold"
+        android:text="impeccthreads"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_60"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/no_network_view"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:weightSum="4"
+        android:orientation="horizontal"
+        android:layout_marginBottom="0dp"
+        android:background="#242424"
+        android:gravity="center"
+        android:visibility="visible" >
+
+        <TextView
+            android:id="@+id/header_text"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="left|center"
+            android:gravity="left|center"
+            android:text="No Internet Connection"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/opensans_regular"/>
+
+        <LinearLayout
+            android:id="@+id/nointernetretry_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="3"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/retryBtn_splash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/transparent"
+                android:fontFamily="@font/opensans_regular"
+                android:gravity="center"
+                android:onClick="retryOnClickSplash"
+                android:text="RETRY"
+                android:textColor="#f5c425"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

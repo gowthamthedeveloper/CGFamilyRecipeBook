@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.cookingschedule.ScheduleCookingActivity">
+
+    <TextView
+        android:id="@+id/textViewCookingScheduleMadatoryNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Note: Red color highlighted fields are mandatory."
+        android:textSize="@dimen/dp_13"
+        android:textColor="@color/colorPrimary"
+        android:gravity="left"
+        android:layout_marginRight="@dimen/dp_5"
+        android:layout_marginLeft="@dimen/dp_5"
+        app:layout_constraintTop_toBottomOf="@+id/actionBar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listViewAddCookingScheduleItem"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dp_5"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCookingScheduleMadatoryNote"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddCookingScheduleSave">
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/btnAddCookingScheduleSave"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:background="@color/transparent"
+        android:text="Save"
+        android:textColor="@color/dv_red"
+        android:textAllCaps="false"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:fontFamily="@font/opensans_semibold"
+        android:layout_marginRight="@dimen/dp_35"
+        android:layout_marginLeft="@dimen/dp_35"
+        android:onClick="btnSaveCookingScheduleDetailsOnClick"/>
+
+    <LinearLayout
+        android:id="@+id/loadingpanelmask_addCookingSchedulereport"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:alpha="0.85"
+        android:orientation="vertical"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/loadingPanel_addCookingSchedulereport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateDrawable="@drawable/progressbar_custom" />
+
+        <TextView
+            android:id="@+id/loadingCapt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Firing up"
+            android:singleLine="false"
+            android:textColor="#96908f"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/opensans_regular"/>
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

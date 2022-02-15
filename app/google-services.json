@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "47037525262",
+    "firebase_url": "https://cgfamilyrecipebook.firebaseio.com",
+    "project_id": "cgfamilyrecipebook",
+    "storage_bucket": "cgfamilyrecipebook.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:47037525262:android:045fc523d2b461e1bebb5f",
+        "android_client_info": {
+          "package_name": "com.impeccthreads.cgfamilyrecipebook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "47037525262-ns7q9qfvq2bgo7brd6ddgaohtsbt13rv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.impeccthreads.cgfamilyrecipebook",
+            "certificate_hash": "b00e2b404437e269ca693809a7b7b1ad4e3a31cb"
+          }
+        },
+        {
+          "client_id": "47037525262-bgrg08rvsqh163jpmmtk2k780o173j7u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoTKG_nHeGC6cBzGqCV1VltDmhoffEjZw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "47037525262-bgrg08rvsqh163jpmmtk2k780o173j7u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

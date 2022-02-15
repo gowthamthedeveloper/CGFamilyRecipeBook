@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.recipes.RecipeDetailActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/actionBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_15"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/actionBar"
+            app:layout_constraintBottom_toBottomOf="@+id/actionBar"
+            android:src="@drawable/back_1"/>
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:background="@color/transparent"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:onClick="btnCookingRecipeDetailBack"/>
+
+        <TextView
+            android:id="@+id/textViewCookingRecipeDetailTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_50"
+            android:gravity="center"
+            android:text="Cooking Schedule Details"
+            android:singleLine="true"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/btnBack"
+            android:fontFamily="@font/opensans_semibold"/>
+
+        <ImageButton
+            android:id="@+id/btnItemWiseReportMore"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="0dp"
+            android:background="@color/transparent"
+            android:text=""
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:src="@drawable/more_2x"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/opensans_semibold"
+            app:layout_constraintRight_toRightOf="parent"
+            android:onClick="btnEditCookingRecipeOnClick"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textViewCookingRecipePath"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Category / Sub Category / Recipe Name"
+        android:textSize="@dimen/dp_13"
+        android:textColor="@color/colorPrimary"
+        android:gravity="left"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginRight="@dimen/dp_5"
+        android:layout_marginLeft="@dimen/dp_10"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/actionBar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCookingRecipePath">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/textViewTitlePreparationTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginLeft="@dimen/dp_10"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="PREPARATION TIME:"
+                android:textSize="@dimen/dp_18"
+                android:fontFamily="@font/opensans_bold"/>
+
+            <TextView
+                android:id="@+id/textViewPreparationTime"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dp_16"
+                android:fontFamily="@font/opensans_semibold"
+                app:layout_constraintTop_toBottomOf="@id/textViewTitlePreparationTime"
+                android:text=""
+                />
+            <TextView
+                android:id="@+id/textViewTitleIngredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginLeft="@dimen/dp_10"
+                app:layout_constraintTop_toBottomOf="@+id/textViewPreparationTime"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="INGREDIENTS:"
+                android:textSize="@dimen/dp_18"
+                android:fontFamily="@font/opensans_bold"/>
+
+            <TextView
+                android:id="@+id/textViewIngredients"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dp_16"
+                android:fontFamily="@font/opensans_semibold"
+                app:layout_constraintTop_toBottomOf="@id/textViewTitleIngredients"
+                android:text=""
+                />
+            <TextView
+                android:id="@+id/textViewTitleMethods"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginLeft="@dimen/dp_10"
+                app:layout_constraintTop_toBottomOf="@+id/textViewIngredients"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="METHODS:"
+                android:textSize="@dimen/dp_18"
+                android:fontFamily="@font/opensans_bold"/>
+
+            <TextView
+                android:id="@+id/textViewMethods"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dp_16"
+                android:fontFamily="@font/opensans_semibold"
+                app:layout_constraintTop_toBottomOf="@id/textViewTitleMethods"
+                android:text=""
+                />
+
+            <TextView
+                android:id="@+id/textViewTitleTips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginLeft="@dimen/dp_10"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="IMPORTANT NOTE:"
+                android:textSize="@dimen/dp_18"
+                android:fontFamily="@font/opensans_bold"
+                app:layout_constraintTop_toBottomOf="@id/textViewMethods"
+                />
+
+            <TextView
+                android:id="@+id/textViewTips"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/dp_16"
+                android:fontFamily="@font/opensans_semibold"
+                android:text=""
+                app:layout_constraintTop_toBottomOf="@id/textViewTitleTips"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/loadingpanelmask_addCookingRecipereport"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:alpha="0.85"
+        android:orientation="vertical"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/loadingPanel_addCookingRecipereport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateDrawable="@drawable/progressbar_custom" />
+
+        <TextView
+            android:id="@+id/loadingCapt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Firing up"
+            android:singleLine="false"
+            android:textColor="#96908f"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/opensans_regular"/>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

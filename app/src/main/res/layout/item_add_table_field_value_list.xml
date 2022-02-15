@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/textViewFieldName"
+        android:layout_width="180dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/opensans_regular"
+        android:gravity="center_vertical"
+        android:maxLines="2"
+        android:text="Name"
+        android:textColor="@color/black_op_50"
+        android:textSize="@dimen/dp_14"
+        android:layout_marginLeft="@dimen/dp_15"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextValue"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/dp_40"
+        android:maxLines="6"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:background="@color/list_background_pressed"
+        android:fontFamily="@font/opensans_semibold"
+        android:inputType="textCapWords|textMultiLine"
+        android:paddingLeft="@dimen/dp_10"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/viewFieldValueSeparator"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/textViewFieldName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerAddItemValue"
+        android:layout_width="200dp"
+        android:layout_height="@dimen/dp_40"
+        android:spinnerMode="dropdown"
+        android:visibility="visible"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:background="@color/list_background_pressed"
+        app:layout_constraintLeft_toRightOf="@+id/textViewFieldName"
+        app:layout_constraintBottom_toTopOf="@+id/viewFieldValueSeparator"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/viewFieldValueSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFieldName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/black_op_10"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
