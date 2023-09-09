@@ -5,11 +5,9 @@ import android.os.Parcelable
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import com.impeccthreads.cgfamilyrecipebook.application.CookingRecipeDetailsTable
-import com.impeccthreads.cgfamilyrecipebook.application.CookingScheduleDetailsTable
 import java.util.*
 
 class CookingRecipeDetails() : Parcelable {
-
     var title: String = ""
     var subTitle: String = ""
     var recipeName: String = ""
@@ -21,7 +19,7 @@ class CookingRecipeDetails() : Parcelable {
     var note: String = ""
     var preparationTime: String = ""
     var isNewRecipe: Boolean = false
-
+    var Chef: String = ""
     //Internal Logics
     var key: String? = null
     var ref: DatabaseReference? = null
@@ -39,6 +37,7 @@ class CookingRecipeDetails() : Parcelable {
         preparationTime = parcel.readString().toString()
         isNewRecipe = parcel.readByte() != 0.toByte()
         key = parcel.readString().toString()
+        Chef = parcel.readString().toString()
     }
 
     constructor(snapshot: DataSnapshot) : this() {
@@ -57,7 +56,7 @@ class CookingRecipeDetails() : Parcelable {
         note = snapshotValue.get(CookingRecipeDetailsTable.note.toString()) as String
         preparationTime = snapshotValue.get(CookingRecipeDetailsTable.preparationTime.toString()) as String
         isNewRecipe = snapshotValue.get(CookingRecipeDetailsTable.isNewRecipe.toString()) as Boolean
-
+        Chef = snapshotValue.get(CookingRecipeDetailsTable.Chef.toString()) as String
     }
 
     fun getValueForField(fieldName: String): String {
@@ -75,8 +74,8 @@ class CookingRecipeDetails() : Parcelable {
             CookingRecipeDetailsTable.note.toString() -> return note.toString()
             CookingRecipeDetailsTable.preparationTime.toString() -> return preparationTime.toString()
             CookingRecipeDetailsTable.isNewRecipe.toString() -> return isNewRecipe.toString()
+            CookingRecipeDetailsTable.Chef.toString() -> return Chef.toString()
         }
-
 
         return  ""
     }
@@ -96,7 +95,7 @@ class CookingRecipeDetails() : Parcelable {
         hashMap.put(CookingRecipeDetailsTable.note.toString(), note!!)
         hashMap.put(CookingRecipeDetailsTable.preparationTime.toString(), preparationTime!!)
         hashMap.put(CookingRecipeDetailsTable.isNewRecipe.toString(), isNewRecipe!!)
-
+        hashMap.put(CookingRecipeDetailsTable.Chef.toString(), Chef!!)
         return hashMap
     }
 
@@ -113,6 +112,7 @@ class CookingRecipeDetails() : Parcelable {
         parcel.writeString(preparationTime)
         parcel.writeByte(if (isNewRecipe) 1 else 0)
         parcel.writeString(key)
+        parcel.writeString(Chef)
     }
 
     override fun describeContents(): Int {

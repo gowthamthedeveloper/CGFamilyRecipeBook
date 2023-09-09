@@ -36,7 +36,6 @@
         <activity android:name=".activity.recipes.AddCookingRecipeActivity"/>
         <activity android:name=".activity.useraccount.LoginActivity"/>
         <activity android:name=".activity.useraccount.SettingsActivity"/>
-
     </application>
 
 </manifest>

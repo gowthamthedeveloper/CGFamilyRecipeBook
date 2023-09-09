@@ -35,8 +35,9 @@ class FirebaseDataHandler(val delegate: FirebaseDataHandlerListener?) {
                     recipeItem.subTitle = item.subTitle
                     recipeItem.recipeName = item.recipeName
                     recipeItem.isNewRecipe = isCategoryHasTrendingRecipe(item.title)
-
-                    recipeItemList.add(recipeItem)
+                    if (item.title.isNotEmpty()) {
+                        recipeItemList.add(recipeItem)
+                    }
                 }
             }
 
@@ -49,17 +50,19 @@ class FirebaseDataHandler(val delegate: FirebaseDataHandlerListener?) {
 
             var recipeItems: ArrayList<RecipeItem> = arrayListOf()
 
-            for (item in AppCacheManager.allCookingRecipeList)
-            {
+            for (item in AppCacheManager.allCookingRecipeList) {
                 val hasRecipeItem = recipeItems.filter { it.recipeName == item.recipeName }
 
-                if (hasRecipeItem.count() == 0)
-                {
+                if (hasRecipeItem.count() == 0) {
                     val recipeItem = RecipeItem()
                     recipeItem.title = item.recipeName
                     recipeItem.recipeName = item.recipeName
                     recipeItem.isNewRecipe = item.isNewRecipe
-                    recipeItems.add(recipeItem)
+                    recipeItem.ingredeints = item.ingredeints
+                    recipeItem.methods = item.methods
+                    if (item.recipeName.isNotEmpty()) {
+                        recipeItems.add(recipeItem)
+                    }
                 }
             }
 
@@ -72,8 +75,7 @@ class FirebaseDataHandler(val delegate: FirebaseDataHandlerListener?) {
 
             val filterCategory = AppCacheManager.allCookingRecipeList.filter { it.title.toLowerCase() == categoryName.toLowerCase() }
 
-            if (filterCategory.count() > 0)
-            {
+            if (filterCategory.count() > 0) {
                 return true
             }
 
@@ -84,8 +86,7 @@ class FirebaseDataHandler(val delegate: FirebaseDataHandlerListener?) {
 
             val filterRecipe = AppCacheManager.allCookingRecipeList.filter { it.recipeName.toLowerCase() == recipeName.toLowerCase() }
 
-            if (filterRecipe.count() > 0)
-            {
+            if (filterRecipe.count() > 0) {
                 return true
             }
             return false
@@ -95,12 +96,9 @@ class FirebaseDataHandler(val delegate: FirebaseDataHandlerListener?) {
 
             var recipeItems: ArrayList<String> = arrayListOf()
 
-            for (recipeItem in AppCacheManager.allCookingRecipeList)
-            {
-                if (recipeItem.recipeName.isNotEmpty())
-                {
-                    if (!recipeItems.contains(recipeItem.recipeName))
-                    {
+            for (recipeItem in AppCacheManager.allCookingRecipeList) {
+                if (recipeItem.recipeName.isNotEmpty()) {
+                    if (!recipeItems.contains(recipeItem.recipeName)) {
                         recipeItems.add(recipeItem.recipeName)
                     }
                 }
@@ -120,10 +118,8 @@ class FirebaseDataHandler(val delegate: FirebaseDataHandlerListener?) {
 
             var hasTrendingRecipe = false
 
-            for (recipeItem in cookingRecipeDetailsList)
-            {
-                if (recipeItem.isNewRecipe)
-                {
+            for (recipeItem in cookingRecipeDetailsList) {
+                if (recipeItem.isNewRecipe) {
                     hasTrendingRecipe = true
                     break
                 }
@@ -194,6 +190,7 @@ class FirebaseDataHandler(val delegate: FirebaseDataHandlerListener?) {
     }
 
     fun getCookingRecipeDetailsList() {
+
 
         FirebaseDatabase.getInstance().getReference(DatabaseTable.cookingrecipedetails.toString()).addValueEventListener(object :
             ValueEventListener {

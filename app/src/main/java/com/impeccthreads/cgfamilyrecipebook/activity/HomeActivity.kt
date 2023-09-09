@@ -32,7 +32,6 @@ class HomeActivity : BaseActivity(), HomeAdapter.HomeAdapterListener {
 
     fun btnSettingsOnClick(view: View) {
         startActivity(Intent(this, SettingsActivity::class.java))
-
 //        showToast("Coming Soon..!")
     }
 

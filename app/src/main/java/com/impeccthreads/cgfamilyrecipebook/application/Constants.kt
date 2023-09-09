@@ -24,6 +24,7 @@ interface Constants {
         var familyList = listOf<String>(Family.cgfamily.toString(), Family.madhanafamily.toString(), Family.saranyafamily.toString())
         var foodType = listOf<String>(FoodType.veg.toString(), FoodType.nonveg.toString())
         var sessionList = listOf<String>("TIFFEN", "LUNCH", "TIFFEN & LUNCH", "SNACKS")
+        var Chef = listOf<String>(FoodType.veg.toString(), FoodType.nonveg.toString())
 
 
         val cookDeliciousRecipe = "Cook Delicious Recipe"
@@ -120,6 +121,7 @@ interface Constants {
         fun getAddCookingRecipeFieldValueList() : ArrayList<FieldValueDto> {
 
             var fieldValueList: ArrayList<FieldValueDto> = arrayListOf()
+            fieldValueList.add(getDefaultFieldTypeValueDto(CookingRecipeDetailsTable.Chef.toString(), true, 500))
             fieldValueList.add(getDefaultFieldTypeValueDto(CookingRecipeDetailsTable.title.toString(), true, 500, false))
             fieldValueList.add(getDefaultFieldTypeValueDto(CookingRecipeDetailsTable.subTitle.toString(), true, 500, false))
             fieldValueList.add(getDefaultFieldTypeValueDto(CookingRecipeDetailsTable.recipeName.toString(), true, 500))

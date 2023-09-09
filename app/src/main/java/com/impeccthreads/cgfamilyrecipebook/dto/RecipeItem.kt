@@ -8,6 +8,8 @@ class RecipeItem() : Parcelable {
     var title: String = ""
     var subTitle: String = ""
     var recipeName: String = ""
+    var ingredeints: String = ""
+    var methods: String = ""
     var isNewRecipe: Boolean = false
     var isVeg: Boolean = false
 
@@ -18,6 +20,8 @@ class RecipeItem() : Parcelable {
         recipeName = parcel.readString().toString()
         isNewRecipe = parcel.readByte() != 0.toByte()
         isVeg = parcel.readByte() != 0.toByte()
+        methods = parcel.readString().toString()
+        ingredeints = parcel.readString().toString()
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -25,6 +29,8 @@ class RecipeItem() : Parcelable {
         parcel.writeString(title)
         parcel.writeString(subTitle)
         parcel.writeString(recipeName)
+        parcel.writeString(ingredeints)
+        parcel.writeString(methods)
         parcel.writeByte(if (isNewRecipe) 1 else 0)
         parcel.writeByte(if (isVeg) 1 else 0)
     }

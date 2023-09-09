@@ -104,6 +104,12 @@ class EditCookingRecipeMethodActivity : BaseActivity(), AddTableItemAdapter.AddT
 
     fun updateEditCookingRecipeFieldValues() {
 
+        if (cookingRecipeDetails!!.Chef.toUpperCase() == "GOWTHAM") {
+            textViewChef.setText("The Great Chef Gowtham's Recipe".toUpperCase())
+        } else {
+            textViewChef.setText("Chef ${cookingRecipeDetails!!.Chef}'s Recipe".toUpperCase())
+        }
+
         textViewPreparationTime.setText(cookingRecipeDetails!!.preparationTime)
         textViewIngredients.setText(cookingRecipeDetails!!.ingredeints)
         textViewMethods.setText(cookingRecipeDetails!!.methods)

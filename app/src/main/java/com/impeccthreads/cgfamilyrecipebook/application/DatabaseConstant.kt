@@ -40,6 +40,7 @@ enum class CookingRecipeDetailsTable {
     note,
     preparationTime,
     foodType,
+    Chef,
     isNewRecipe;
 
     override fun toString(): String {

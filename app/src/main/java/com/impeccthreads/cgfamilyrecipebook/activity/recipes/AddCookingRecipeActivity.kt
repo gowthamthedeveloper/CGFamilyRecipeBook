@@ -134,19 +134,15 @@ class AddCookingRecipeActivity : BaseActivity(), AddTableItemAdapter.AddTableIte
                         CookingRecipeDetailsTable.recipeName.toString() ->
                             request.recipeName = fieldValue.value
                         CookingRecipeDetailsTable.foodType.toString() ->
-                            if (fieldValue.value  == FoodType.veg.toString()){
-                                request.isVeg = true
-                            }
-                            else
-                            {
-                                request.isVeg = false
-                            }
+                            request.isVeg = fieldValue.value  == FoodType.veg.toString()
                         CookingRecipeDetailsTable.session.toString() ->
                             request.session = fieldValue.value
                         CookingRecipeDetailsTable.combination.toString() ->
                             request.combination = fieldValue.value
                         CookingRecipeDetailsTable.preparationTime.toString() ->
                             request.preparationTime = fieldValue.value
+                        CookingRecipeDetailsTable.Chef.toString() ->
+                            request.Chef = fieldValue.value
                     }
                 }
 

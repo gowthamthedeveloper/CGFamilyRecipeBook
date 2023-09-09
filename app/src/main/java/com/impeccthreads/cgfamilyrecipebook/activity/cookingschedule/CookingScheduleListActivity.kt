@@ -55,8 +55,6 @@ class CookingScheduleListActivity : BaseActivity(), CookingScheduleListAdapter.C
 
     override fun cookingScheduleListReceived() {
         hideProgressBar()
-
-
         cookingScheduleListRecyclerView.layoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
         cookingScheduleListRecyclerView.adapter = CookingScheduleListAdapter(this, AppCacheManager.allCookingScheduleDetailsList, this)
     }
@@ -68,7 +66,6 @@ class CookingScheduleListActivity : BaseActivity(), CookingScheduleListAdapter.C
 
     //Recycler Listener
     override fun didSelectViewAtPosition(position: Int) {
-
         val intent = Intent(this, CookingScheduleDetailsActivity::class.java)
         intent.putExtra(COOKING_SCHEDULE_DETAIL, AppCacheManager.allCookingScheduleDetailsList[position])
         startActivity(intent)

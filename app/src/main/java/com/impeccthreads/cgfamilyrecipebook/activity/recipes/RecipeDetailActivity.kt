@@ -17,8 +17,14 @@ import com.impeccthreads.cgfamilyrecipebook.application.DatabaseTable
 import com.impeccthreads.cgfamilyrecipebook.dto.CookingRecipeDetails
 import com.impeccthreads.cgfamilyrecipebook.dto.RecipeItem
 import com.impeccthreads.cgfamilyrecipebook.modelhandler.RecipeDataHandler
+import kotlinx.android.synthetic.main.activity_edit_cooking_recipe.*
 import kotlinx.android.synthetic.main.activity_recipe.*
 import kotlinx.android.synthetic.main.activity_recipe_detail.*
+import kotlinx.android.synthetic.main.activity_recipe_detail.textViewChef
+import kotlinx.android.synthetic.main.activity_recipe_detail.textViewIngredients
+import kotlinx.android.synthetic.main.activity_recipe_detail.textViewMethods
+import kotlinx.android.synthetic.main.activity_recipe_detail.textViewPreparationTime
+import kotlinx.android.synthetic.main.activity_recipe_detail.textViewTips
 
 class RecipeDetailActivity : BaseActivity() {
 
@@ -73,6 +79,13 @@ class RecipeDetailActivity : BaseActivity() {
     }
 
     fun updateRecipeDetails() {
+
+        if (cookingRecipeDetails!!.Chef.toUpperCase() == "GOWTHAM") {
+            textViewChef.setText("The Great Chef Gowtham's Recipe".toUpperCase())
+        } else {
+            textViewChef.setText("Chef ${cookingRecipeDetails!!.Chef}'s Recipe".toUpperCase())
+        }
+
         textViewIngredients.text = cookingRecipeDetails!!.ingredeints
         textViewMethods.text = cookingRecipeDetails!!.methods
         textViewTips.text = cookingRecipeDetails!!.note

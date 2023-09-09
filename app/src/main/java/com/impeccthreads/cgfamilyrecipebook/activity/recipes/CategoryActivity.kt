@@ -35,11 +35,13 @@ class CategoryActivity : BaseActivity(), CategoryAdapter.CategoryAdapterListener
 //    var dataHandler = RecipeDataHandler(this, this)
     var firebaseDataHandler = FirebaseDataHandler(this)
     var isSearchEnabled: Boolean = false
+    var addActionBarItem: MenuItem? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         this.title = "Recipe Category List"
 
@@ -50,6 +52,7 @@ class CategoryActivity : BaseActivity(), CategoryAdapter.CategoryAdapterListener
 
         showProgressBar()
         firebaseDataHandler.getCookingRecipeDetailsList()
+
 
 //        if (dataHandler.checkDocumentAvailable())
 //        {
@@ -80,13 +83,24 @@ class CategoryActivity : BaseActivity(), CategoryAdapter.CategoryAdapterListener
 
     }
 
+    fun getCookingRecipeDetailsFromAsset() {
+//        var jsonString: String = assets.list("cookingrecipedetails.json").bufferedReader().use { it.readText() }
+
+        //
+//        val typeToken = object : TypeToken<List>() {}.type
+//        val authors = Gson().fromJson<List>(json, typeToken)
+
+//        val allCookingCookingRecipeDetailsList = object : TypeToken<ArrayList<CookingRecipeDetails>>() {}.type
+//        AppCacheManager.allCookingRecipeList = Gson().fromJson(jsonString, allCookingCookingRecipeDetailsList)
+//        cookingRecipeDetailsListReceived()
+    }
+
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
         super.onPrepareOptionsMenu(menu)
-        val item = menu.findItem(R.id.action_add)
+        addActionBarItem = menu.findItem(R.id.action_add)
         val icon = resources.getDrawable(R.drawable.add)
         icon.setColorFilter(resources.getColor(R.color.white), PorterDuff.Mode.SRC_IN)
-        item.icon = icon
-
+        addActionBarItem?.icon = icon
         return super.onPrepareOptionsMenu(menu)
     }
 
@@ -95,6 +109,11 @@ class CategoryActivity : BaseActivity(), CategoryAdapter.CategoryAdapterListener
         inflater.inflate(R.menu.main_menu, menu)
         val searchViewItem = menu.findItem(R.id.action_search)
         val searchView = MenuItemCompat.getActionView(searchViewItem) as SearchView
+        searchViewItem.setOnMenuItemClickListener{
+            isSearchEnabled = true
+            updateActionBarButtonVisibilityWhenSearchEnabled()
+            true
+        }
         searchView.setOnQueryTextListener(object :
             SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
@@ -108,6 +127,7 @@ class CategoryActivity : BaseActivity(), CategoryAdapter.CategoryAdapterListener
 
             override fun onQueryTextChange(newText: String): Boolean {
                 isSearchEnabled = true
+                updateActionBarButtonVisibilityWhenSearchEnabled()
 
                 val adaptor = (listViewCategoryList.adapter as CategoryAdapter)
                 filteredRecipeItemList = ArrayList(recipeItemList.filter{ it.recipeName.toLowerCase().contains(newText.toLowerCase()) })
@@ -119,6 +139,8 @@ class CategoryActivity : BaseActivity(), CategoryAdapter.CategoryAdapterListener
 
         searchView.setOnCloseListener(SearchView.OnCloseListener {
             isSearchEnabled = false
+            updateActionBarButtonVisibilityWhenSearchEnabled()
+
             val adaptor = (listViewCategoryList.adapter as CategoryAdapter)
             adaptor.setItemList(categoryList)
 
@@ -128,7 +150,12 @@ class CategoryActivity : BaseActivity(), CategoryAdapter.CategoryAdapterListener
         return super.onCreateOptionsMenu(menu)
     }
 
-
+    fun updateActionBarButtonVisibilityWhenSearchEnabled() {
+//        addActionBarItem?.setVisible(!isSearchEnabled)
+//        supportActionBar?.setDisplayShowTitleEnabled(!isSearchEnabled)
+//        supportActionBar?.setHomeButtonEnabled(!isSearchEnabled)
+//        supportActionBar?.setDisplayHomeAsUpEnabled(!isSearchEnabled)
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here.
@@ -149,13 +176,13 @@ class CategoryActivity : BaseActivity(), CategoryAdapter.CategoryAdapterListener
 //        }
 
         if (id == R.id.action_add) {
-            val intent = Intent(this, AddCookingRecipeActivity::class.java)
-            intent.putExtra(IS_ADDING_RECIPE_CATEGORY, true)
-            startActivityForResult(intent, PICK_ADDED_COOKING_RECIPE_CATEGORY_REQUEST_CODE)
-            return true
+            if (!isSearchEnabled) {
+                val intent = Intent(this, AddCookingRecipeActivity::class.java)
+                intent.putExtra(IS_ADDING_RECIPE_CATEGORY, true)
+                startActivityForResult(intent, PICK_ADDED_COOKING_RECIPE_CATEGORY_REQUEST_CODE)
+                return true
+            }
         }
-
-
         return super.onOptionsItemSelected(item)
     }
 

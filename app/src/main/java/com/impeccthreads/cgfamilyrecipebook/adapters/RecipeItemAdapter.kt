@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.impeccthreads.cgfamilyrecipebook.R
+import com.impeccthreads.cgfamilyrecipebook.application.FoodType
 import com.impeccthreads.cgfamilyrecipebook.dto.CookingRecipeDetails
 import com.impeccthreads.cgfamilyrecipebook.utility.listen
 
@@ -45,15 +46,9 @@ class RecipeItemAdapter(val mContext: Context, var cookingRecipeDetailsList: Arr
         val recipeItem = cookingRecipeDetailsList.get(position)
 
         holder.textViewRecipeItemName.text = recipeItem.recipeName!!.capitalize()
+        holder.imageViewNewTag.visibility = if(recipeItem.isNewRecipe) View.VISIBLE else View.GONE
+        holder.imageViewRecipe.visibility = if(recipeItem.ingredeints.isNotEmpty() || recipeItem.methods.isNotEmpty()) View.VISIBLE else View.GONE
 
-        if (recipeItem.isNewRecipe)
-        {
-            holder.imageViewNewTag.visibility = View.VISIBLE
-        }
-        else
-        {
-            holder.imageViewNewTag.visibility = View.GONE
-        }
     }
 
 
@@ -61,8 +56,7 @@ class RecipeItemAdapter(val mContext: Context, var cookingRecipeDetailsList: Arr
 
         val textViewRecipeItemName = view.findViewById<TextView>(R.id.textViewRecipeItemName) as TextView
         val imageViewNewTag = view.findViewById<TextView>(R.id.imageViewNewTag) as ImageView
-
-
+        val imageViewRecipe = view.findViewById<TextView>(R.id.imageViewRecipe) as ImageView
 
     }
 }

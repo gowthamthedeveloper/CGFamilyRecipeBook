@@ -24,8 +24,7 @@ class SplashActivity : BaseActivity() {
     }
 
     fun configureView() {
-        if (NetworkManager.isNetWorkAvailableNow(this))
-        {
+        if (NetworkManager.isNetWorkAvailableNow(this)) {
             no_network_view.visibility = View.GONE
 
             Handler().postDelayed({
@@ -34,18 +33,14 @@ class SplashActivity : BaseActivity() {
                 startActivity(mainIntent)
                 finish()
             }, 500)
-        }
-        else
-        {
+        } else {
             no_network_view.visibility = View.VISIBLE
-
         }
     }
 
     fun retryOnClickSplash(view: View) {
 
-        if (NetworkManager.isNetWorkAvailableNow(this))
-        {
+        if (NetworkManager.isNetWorkAvailableNow(this)) {
             no_network_view.visibility = View.GONE
 
             val mainIntent = Intent(this, LoginActivity::class.java)

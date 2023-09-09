@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.impeccthreads.cgfamilyrecipebook.R
@@ -21,7 +22,6 @@ class CategoryAdapter(val mContext: Context, var categoryList: ArrayList<RecipeI
     }
 
     fun getItemList(): List<RecipeItem> {
-
         return categoryList
     }
 
@@ -40,26 +40,16 @@ class CategoryAdapter(val mContext: Context, var categoryList: ArrayList<RecipeI
     }
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-
         val category = categoryList.get(position)
-
         holder.textViewCategoryName.text = category.title.capitalize()
-
-        if (category.isNewRecipe)
-        {
-            holder.viewNewTag.visibility = View.VISIBLE
-        }
-        else
-        {
-            holder.viewNewTag.visibility = View.GONE
-        }
+        holder.imageViewRecipe.visibility = if(category.ingredeints.isNotEmpty() || category.methods.isNotEmpty()) View.VISIBLE else View.GONE
+        holder.viewNewTag.visibility = if(category.isNewRecipe) View.VISIBLE else View.GONE
     }
 
 
     class CategoryViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-
         val textViewCategoryName = view.findViewById<TextView>(R.id.textViewCategoryName) as TextView
         val viewNewTag = view.findViewById<TextView>(R.id.viewNewTag) as View
-
+        val imageViewRecipe = view.findViewById<TextView>(R.id.imageViewRecipe) as ImageView
     }
 }
